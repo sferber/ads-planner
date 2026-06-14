@@ -345,6 +345,7 @@ select {
   color: var(--muted);
   font-weight: 600;
   flex: 1;
+  min-width: 0; /* erlaubt Schrumpfen in Flex-/Grid-Zeilen */
 }
 
 .field input,
@@ -355,6 +356,8 @@ select {
   background: var(--surface);
   color: var(--text);
   font-weight: 500;
+  width: 100%;
+  min-width: 0;
 }
 
 .field input:focus,
@@ -467,8 +470,14 @@ select {
 }
 
 .add-details {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+/* Energie-Feld in die zweite Zeile, volle Breite – passt auf schmale Screens */
+.add-details .field:nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 /* ---------- Empty State ---------- */
