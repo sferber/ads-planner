@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { durableStorage } from "../lib/storage";
 import type {
   Activity,
   ActivityStatus,
@@ -319,6 +320,8 @@ export const useStore = create<State>()(
     {
       name: "fokusplan-v1",
       version: 1,
+      // IndexedDB (mit localStorage-Spiegel) – auf iOS-PWAs langlebig
+      storage: createJSONStorage(() => durableStorage),
     },
   ),
 );
