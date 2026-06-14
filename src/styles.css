@@ -360,6 +360,14 @@ select {
   min-width: 0;
 }
 
+/* iOS: native Zeit-/Datumsfelder ignorieren sonst die Breite und laufen über */
+.field input[type="time"],
+.field input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  text-align: left;
+}
+
 .field input:focus,
 .field select:focus,
 .add-input:focus {
